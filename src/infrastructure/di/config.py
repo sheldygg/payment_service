@@ -1,6 +1,7 @@
-from dishka import Provider, provide, Scope
+from dishka import Provider, Scope, provide
 
-from src.infrastructure.config import Config, get_config, DatabaseConfig
+from src.infrastructure.config import Config, DatabaseConfig, get_config
+
 
 class ConfigProvider(Provider):
     scope = Scope.APP

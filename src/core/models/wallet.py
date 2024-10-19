@@ -1,7 +1,8 @@
-from typing import NewType
 from dataclasses import dataclass
+from typing import NewType
 
 WalletAddress = NewType("WalletAddress", str)
+
 
 @dataclass
 class WalletDto:

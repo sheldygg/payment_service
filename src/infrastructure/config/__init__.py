@@ -2,10 +2,10 @@ from dataclasses import dataclass
 
 from .db import DatabaseConfig
 
+
 @dataclass
 class Config:
     db: DatabaseConfig
-
 
 
 def get_config(path: str | None = None) -> Config:

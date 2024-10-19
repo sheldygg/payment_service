@@ -1,8 +1,9 @@
 from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column
 
+from src.core.models.wallet import WalletDto, WalletAddress
 from src.infrastructure.db.models.base import Base
-from src.core.models.wallet import WalletDto
+
 
 class Wallet(Base):
     __tablename__ = "wallet"
@@ -12,6 +13,6 @@ class Wallet(Base):
 
     def to_dto(self) -> WalletDto:
         return WalletDto(
-            address=self.address,
+            address=WalletAddress(self.address),
             private_key=self.private_key,
         )

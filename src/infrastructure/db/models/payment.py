@@ -1,8 +1,9 @@
-from sqlalchemy import String, Float
+from sqlalchemy import Float, String
 from sqlalchemy.orm import Mapped, mapped_column
 
+from src.core.models.payment import PaymentDto, PaymentId
 from src.infrastructure.db.models.base import Base
-from src.core.models.payment import PaymentDto
+
 
 class Payment(Base):
     __tablename__ = "payment"
@@ -13,7 +14,7 @@ class Payment(Base):
 
     def to_dto(self) -> PaymentDto:
         return PaymentDto(
-            id=self.id,
+            id=PaymentId(self.id),
             amount=self.amount,
             description=self.description,
         )

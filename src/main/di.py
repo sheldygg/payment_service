@@ -1,9 +1,11 @@
-from dishka import Provider, make_async_container, AsyncContainer
+from dishka import AsyncContainer, Provider, make_async_container
 
 from src.infrastructure.di.config import ConfigProvider
 from src.infrastructure.di.db import DbProvider
-from src.infrastructure.di.repositories import RepositoriesProvider
 from src.infrastructure.di.interactors import InteractorsProvider
+from src.infrastructure.di.repositories import RepositoriesProvider
+from src.infrastructure.di.tron import TronProvider
+
 
 def get_common_providers() -> list[Provider]:
     return [
@@ -11,6 +13,7 @@ def get_common_providers() -> list[Provider]:
         DbProvider(),
         RepositoriesProvider(),
         InteractorsProvider(),
+        TronProvider(),
     ]
 
 

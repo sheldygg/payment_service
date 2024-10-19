@@ -1,14 +1,11 @@
 from typing import AsyncIterable
 
 from dishka import Provider, Scope, provide
-from sqlalchemy.ext.asyncio import (
-    AsyncEngine,
-    AsyncSession,
-    async_sessionmaker,
-    create_async_engine,
-)
+from sqlalchemy.ext.asyncio import (AsyncEngine, AsyncSession,
+                                    async_sessionmaker, create_async_engine)
 
 from src.infrastructure.config import DatabaseConfig
+from src.infrastructure.db.uow import UnitOfWork
 
 
 class DbProvider(Provider):
@@ -36,4 +33,4 @@ class DbProvider(Provider):
         async with pool() as session:
             yield session
 
-    # uow = provide(UnitOfWork, scope=Scope.REQUEST)
+    uow = provide(UnitOfWork, scope=Scope.REQUEST)
